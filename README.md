@@ -1,6 +1,7 @@
 # Intro
 Template: https://github.com/ljlm0402/typescript-express-starter?tab=readme-ov-file
-## nodemon
+
+# nodemon
 nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 >nodemon [your node app]
 eg:
@@ -74,6 +75,3 @@ Makefiles are used to help decide which parts of a large program need to be reco
 
 Modify Makefile file to your source code.
 
-
-
-s

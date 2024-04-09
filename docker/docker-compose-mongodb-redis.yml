@@ -68,3 +68,7 @@ volumes:
   dbdata:
   cache:
     driver: local
+
+networks:
+  node-network:
+    driver: bridge

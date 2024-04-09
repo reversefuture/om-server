@@ -7,19 +7,32 @@
   "scripts": {
     "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "build": "swc src -d dist --source-maps --copy-files",
-    "build:tsc": "tsc && tsc-alias",
-    "test": "jest --forceExit --detectOpenHandles",
-    "lint": "eslint --ignore-path .gitignore --ext .ts src/",
+    "build": "tsc --project tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
+    "build:swc": "swc src -d dist --source-maps --copy-files",
+    "watch": " nodemon -e ts -w ./src -x 'ts-node src/server.ts' ",
+    "test": "jest --forceExit --detectOpenHandles --verbose --runInBand",
+    "test:watch": "jest --watch",
+    "test:cover": "jest --runInBand --no-cache --coverage --verbose",
+    "test:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
+    "test:debug": "NODE_ENV= node --inspect=0.0.0.0:20001 ./node_modules/.bin/jest --colors --runInBand --no-coverage --watch",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx src/",
     "lint:fix": "npm run lint -- --fix",
     "prisma:init": "prisma init",
     "prisma:migrate": "prisma migrate dev --preview-feature",
     "prisma:generate": "prisma generate",
+    "prisma:seed": "prisma db seed",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
-    "deploy:dev": "pm2 start ecosystem.config.js --only dev"
+    "deploy:dev": "pm2 start ecosystem.config.js --only dev",
+    "prettier": "prettier --check \"**/*.{js,ts,tsx,css}\"",
+    "prettier:fix": "prettier --config .prettierrc --write \"**/*.{js,ts,tsx,css}\"",
+    "docker:prod:chaining": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up|| echo 'Failed to start containers'",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up|| echo 'Failed to start containers'",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up|| echo 'Failed to start containers'",
+    "prepare": "husky install"
   },
   "prisma": {
-    "schema": "src/prisma/schema.prisma"
+    "schema": "src/prisma/schema.prisma",
+    "seed": "ts-node src/prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^4.1.0",
@@ -39,7 +52,9 @@
     "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.5.0",
+    "type-graphql": "^1.1.1",
     "typedi": "^0.10.0",
+    "typeorm": "^0.3.20",
     "winston": "^3.8.1",
     "winston-daily-rotate-file": "^4.7.1"
   },
@@ -68,6 +83,7 @@
     "husky": "^8.0.1",
     "jest": "^28.1.1",
     "lint-staged": "^13.0.3",
+    "minimatch": "^9.0.4",
     "node-config": "^0.0.2",
     "node-gyp": "^9.1.0",
     "nodemon": "^2.0.19",

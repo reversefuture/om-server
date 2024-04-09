@@ -3,5 +3,7 @@
   "compilerOptions": {
     "strict": false,
     "declaration": false,
+    "sourceMap": false
   },
+  "exclude": ["node_modules", "**/*.test.ts", "tests"]
 }

@@ -2,8 +2,8 @@ import { PrismaClient } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { Service } from 'typedi';
 import { CreateUserDto } from '@dtos/users.dto';
-import { HttpException } from '@/exceptions/httpException';
-import { User } from '@interfaces/users.interface';
+import { HttpException } from '@/exceptions/HttpException';
+import { User } from '@/models/users.interface';
 
 @Service()
 export class UserService {

@@ -2,10 +2,13 @@
 FROM node:16.18-buster-slim
 
 # Copy Dir
-COPY . ./app
+COPY . ./app && chown -R node:node /usr/src/node-app
 
 # Work to Dir
 WORKDIR /app
+
+# Switch to the node user to perform the following commands as a non-root user
+USER node
 
 # Install Node Package
 RUN npm install --legacy-peer-deps
@@ -15,5 +18,5 @@ ENV NODE_ENV development
 
 EXPOSE 3000
 
-# Cmd script
+# Cmd script, as the image already started so don't need to run the command in docker-compose.yml
 CMD ["npm", "run", "dev"]
