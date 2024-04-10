@@ -20,7 +20,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: mysql://root:password@localhost:3306/dingding
+      DATABASE_URL: mysql://root:password@localhost:3306/om-server
     volumes:
       - ./:/app
       - /app/node_modules
@@ -36,7 +36,7 @@ services:
     container_name: mysql
     image: mysql:5.7
     environment:
-      DATABASE_URL: mysql://root:password@localhost:3306/dingding
+      DATABASE_URL: mysql://root:password@localhost:3306/om-server
     ports:
       - "3306:3306"
     networks:

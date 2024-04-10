@@ -14,7 +14,7 @@ import { HttpException } from '@exceptions/HttpException';
 export const ValidationMiddleware = (type: any, skipMissingProperties = false, whitelist = false, forbidNonWhitelisted = false) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const dto = plainToInstance(type, req.body);
-    validateOrReject(dto, { skipMissingProperties, whitelist, forbidNonWhitelisted })
+    validateOrReject(dto, { skipMissingProperties, whitelist, forbidNonWhitelisted, validationError: { target: false } })
       .then(() => {
         req.body = dto;
         next();

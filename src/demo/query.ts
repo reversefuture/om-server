@@ -1,4 +1,5 @@
 // npx ts-node demo/query.ts
+//Or:  tsx src/demo/query.ts
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
