@@ -2,7 +2,7 @@
 FROM node:16.18-buster-slim
 
 # Copy Dir
-COPY . ./app && chown -R node:node /usr/src/node-app
+COPY . ./app && chown -R node:node ./app
 
 # Work to Dir
 WORKDIR /app

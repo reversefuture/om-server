@@ -19,28 +19,28 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - "3000:3000"
-    environment:
-      DATABASE_URL: mysql://root:password@localhost:3306/om-server
+    # environment:
+      # DATABASE_URL: postgresql://postgres:password@postgresql:5432/om-server
     volumes:
       - ./:/app
       - /app/node_modules
     restart: "unless-stopped"
     networks:
       - backend
-    links:
-      - mysql
-    depends_on:
-      - mysql
+    # depends_on:
+    #   - postgresql
 
-  mysql:
-    container_name: mysql
-    image: mysql:5.7
-    environment:
-      DATABASE_URL: mysql://root:password@localhost:3306/om-server
-    ports:
-      - "3306:3306"
-    networks:
-      - backend
+  # postgresql:
+  #   container_name: postgresql
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: om-server
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - backend
 
 networks:
   backend:
