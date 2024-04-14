@@ -1,6 +1,70 @@
 # API
 https://www.prisma.io/docs/orm/reference/prisma-client-reference?query=NOT&page=1
 
+## Commands
+```sh
+  $ prisma [command]
+
+Commands
+
+            init   Set up Prisma for your app
+        generate   Generate artifacts (e.g. Prisma Client)
+              db   Manage your database schema and lifecycle
+         migrate   Migrate your database
+          studio   Browse your data with Prisma Studio
+        validate   Validate your Prisma schema
+          format   Format your Prisma schema
+
+Flags
+
+     --preview-feature   Run Preview Prisma commands
+
+Examples
+
+  Set up a new Prisma project
+  $ prisma init
+
+  Generate artifacts (e.g. Prisma Client)
+  $ prisma generate
+
+  Browse your data
+  $ prisma studio
+
+  Create migrations from your Prisma schema, apply them to the database, generate artifacts (e.g. Prisma Client)
+  $ prisma migrate dev
+
+  Use --name to provide a custom name for the migration:
+  $ npx prisma migrate dev --name <migration_name>
+
+  Pull the schema from an existing database, updating the Prisma schema
+  $ prisma db pull
+
+  Push the Prisma schema state to the database
+  $ prisma db push
+
+  Apply pending migrations to update your database schema:
+  $ npx prisma migrate deploy
+
+  Rollback applied migrations to revert changes to your database schema:
+  $ npx prisma migrate reset
+
+
+  Seed the database with initial or test data:
+  $ npx prisma db seed
+
+  Validate your Prisma schema
+  $ prisma validate
+
+  Format your Prisma schema
+  $ prisma format
+  
+  Generate Schema Documentation:
+  $ npx prisma generate --doc
+```
+
+
+
+
 ## Filter conditions and operators
 **Equal to (equals or ==)**
 >Syntax: fieldName: { equals: value }
