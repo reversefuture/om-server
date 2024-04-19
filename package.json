@@ -25,6 +25,7 @@
     "deploy:dev": "pm2 start ecosystem.config.js --only dev",
     "prettier": "prettier --check \"**/*.{js,ts,tsx,css}\"",
     "prettier:fix": "prettier --config .prettierrc --write \"**/*.{js,ts,tsx,css}\"",
+    "build:image":"docker build -f Dockerfile.prod -t om-server .",
     "docker:prod:chaining": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up|| echo 'Failed to start containers'",
     "docker:prod": "docker-compose -f docker-compose.prod.yml up|| echo 'Failed to start containers'",
     "docker:dev": "docker-compose -f docker-compose.dev.yml up|| echo 'Failed to start containers'",

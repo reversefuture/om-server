@@ -1,5 +1,7 @@
 # NodeJS Version 16
 FROM node:16.18-buster-slim
+# Prisma need openssl
+# RUN apt-get update -y && apt-get install -y openssl
 
 # Copy Dir
 COPY . ./app

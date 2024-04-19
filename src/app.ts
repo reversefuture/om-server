@@ -46,6 +46,8 @@ export class App {
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
+    // against http parameter pollution attacks.By default all top-level parameters in `req.query` are checked for being an array.
+    // If a parameter is an array the array is moved to `req.queryPolluted` and `req.query` is assigned the last value of the array:
     this.app.use(hpp());
     this.app.use(helmet());
     this.app.use(compression());
